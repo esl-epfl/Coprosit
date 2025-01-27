@@ -1,0 +1,12 @@
+// Copyright 2023 David Mallasen Quintana
+// Solderpad Hardware License, Version 2.1, see LICENSE for details.
+// SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+{
+  name: "esl-epfl_prau",
+  target_dir: "esl-epfl_prau",
+
+  upstream: {
+    url: "https://github.com/esl-epfl/PRAU.git",
+    rev: "f1dbd5bdb15088de4796827261692a6942ab6ece",
+  },
+}

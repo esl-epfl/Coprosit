@@ -1,0 +1,63 @@
+// Copyright 2023 David Mallasén Quintana
+// SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+//
+// Licensed under the Solderpad Hardware License v 2.1 (the “License”); you
+// may not use this file except in compliance with the License, or, at your
+// option, the Apache License version 2.0. You may obtain a copy of the
+// License at https://solderpad.org/licenses/SHL-2.1/
+//
+// Unless required by applicable law or agreed to in writing, any work
+// distributed under the License is distributed on an “AS IS” BASIS, WITHOUT
+// WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+// License for the specific language governing permissions and limitations
+// under the License.
+//
+// Author: David Mallasén <dmallase@ucm.es>
+// Description: Coprosit instruction package. Contains the bit pattern of every
+//   instruction supported by Coprosit.
+
+package coprosit_instr_pkg;
+
+  // Posit load and store instructions
+  localparam logic [31:0] PLW = 32'b ????????????_?????_101_?????_0101011;
+  localparam logic [31:0] PSW = 32'b ???????_?????_?????_110_?????_0101011;
+
+  // Posit computational instructions
+  localparam logic [31:0] PADD_S  = 32'b 00000_10_?????_?????_111_?????_0101011;
+  localparam logic [31:0] PSUB_S  = 32'b 00001_10_?????_?????_111_?????_0101011;
+  localparam logic [31:0] PMUL_S  = 32'b 00010_10_?????_?????_111_?????_0101011;
+  localparam logic [31:0] PDIV_S  = 32'b 00011_10_?????_?????_111_?????_0101011;
+  localparam logic [31:0] PMIN_S  = 32'b 00100_10_?????_?????_111_?????_0101011;
+  localparam logic [31:0] PMAX_S  = 32'b 00101_10_?????_?????_111_?????_0101011;
+  localparam logic [31:0] PSQRT_S = 32'b 00110_10_00000_?????_111_?????_0101011;
+
+  // Posit quire instructions
+  localparam logic [31:0] QMADD_S  = 32'b 00111_10_?????_?????_111_00000_0101011;
+  localparam logic [31:0] QMSUB_S  = 32'b 01000_10_?????_?????_111_00000_0101011;
+  localparam logic [31:0] QCLR_S   = 32'b 01001_10_00000_00000_111_00000_0101011;
+  localparam logic [31:0] QNEG_S   = 32'b 01010_10_00000_00000_111_00000_0101011;
+  localparam logic [31:0] QROUND_S = 32'b 01011_10_00000_00000_111_?????_0101011;
+
+  // Posit conversion instructions
+  localparam logic [31:0] PCVT_W_S  = 32'b 01100_10_00000_?????_111_?????_0101011;
+  localparam logic [31:0] PCVT_WU_S = 32'b 01101_10_00000_?????_111_?????_0101011;
+  localparam logic [31:0] PCVT_L_S  = 32'b 01110_10_00000_?????_111_?????_0101011;
+  localparam logic [31:0] PCVT_LU_S = 32'b 01111_10_00000_?????_111_?????_0101011;
+  localparam logic [31:0] PCVT_S_W  = 32'b 10000_10_00000_?????_111_?????_0101011;
+  localparam logic [31:0] PCVT_S_WU = 32'b 10001_10_00000_?????_111_?????_0101011;
+  localparam logic [31:0] PCVT_S_L  = 32'b 10010_10_00000_?????_111_?????_0101011;
+  localparam logic [31:0] PCVT_S_LU = 32'b 10011_10_00000_?????_111_?????_0101011;
+
+  // Posit move instructions
+  localparam logic [31:0] PSGNJ_S  = 32'b 10100_10_?????_?????_111_?????_0101011;
+  localparam logic [31:0] PSGNJN_S = 32'b 10101_10_?????_?????_111_?????_0101011;
+  localparam logic [31:0] PSGNJX_S = 32'b 10110_10_?????_?????_111_?????_0101011;
+  localparam logic [31:0] PMV_X_W  = 32'b 10111_10_00000_?????_111_?????_0101011;
+  localparam logic [31:0] PMV_W_X  = 32'b 11000_10_00000_?????_111_?????_0101011;
+
+  // Posit compare instructions
+  localparam logic [31:0] PEQ_S = 32'b 11001_10_?????_?????_111_?????_0101011;
+  localparam logic [31:0] PLT_S = 32'b 11010_10_?????_?????_111_?????_0101011;
+  localparam logic [31:0] PLE_S = 32'b 11011_10_?????_?????_111_?????_0101011;
+
+endpackage  // coprosit_instr_pkg

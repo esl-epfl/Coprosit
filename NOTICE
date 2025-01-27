@@ -1,0 +1,61 @@
+Copyright (c) 2023 David Mallasén Quintana
+
+See also the LICENSE file.
+
+The purpose of this NOTICE file is to contain notices that are required by
+the copyright owner of software included in this project and their license.
+Some of the accompanying products have an attribution requirement, so see below.
+
+---
+cv32e40x
+
+HOMEPAGE: https://github.com/openhwgroup/cv32e40x
+COPYRIGHT: Copyright 2021 TU Wien
+LICENSE:
+
+This file, and derivatives thereof are licensed under the
+Solderpad License, Version 2.0 (the "License");
+Use of this file means you agree to the terms and conditions
+of the license and are in full compliance with the License.
+You may obtain a copy of the License at
+
+https://solderpad.org/licenses/SHL-2.0/
+
+Unless required by applicable law or agreed to in writing, software
+and hardware implementations thereof
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESSED OR IMPLIED.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+---
+fpu_ss
+HOMEPAGE: https://github.com/pulp-platform/fpu_ss
+COPYRIGHT: Copyright 2022 ETH Zurich and University of Bologna.
+LICENSE:
+
+Copyright and related rights are licensed under the Solderpad Hardware
+License, Version 0.51 (the "License"); you may not use this file except in
+compliance with the License.  You may obtain a copy of the License at
+http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+or agreed to in writing, software, hardware and materials distributed under
+this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
+
+---
+common_cells
+HOMEPAGE: https://github.com/pulp-platform/common_cells
+COPYRIGHT: Copyright 2020 ETH Zurich and University of Bologna.
+LICENSE:
+
+Copyright and related rights are licensed under the Solderpad Hardware
+License, Version 0.51 (the "License"); you may not use this file except in
+compliance with the License.  You may obtain a copy of the License at
+http://solderpad.org/licenses/SHL-0.51. Unless required by applicable law
+or agreed to in writing, software, hardware and materials distributed under
+this License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+CONDITIONS OF ANY KIND, either express or implied. See the License for the
+specific language governing permissions and limitations under the License.
+
+---

@@ -1,0 +1,158 @@
+CAPI=2:
+
+# Copyright 2023 David Mallasen Quintana
+# Solderpad Hardware License, Version 2.1, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+
+name: "esl-epfl:ip:prau:0.0.1"
+description: "PRAU: Posit and quiRe Arithmetic Unit"
+
+filesets:
+  prau_rtl:
+    files:
+      - hw/prau_pkg.sv
+      - hw/prau_comp.sv
+      - hw/prau_conv.sv
+      - hw/prau_quire.sv
+      - hw/prau_top.sv
+    file_type: systemVerilogSource
+
+  posit8_rtl:
+    files:
+      - hw/posit8/add.vhd
+      - hw/posit8/div_approx.vhd
+      - hw/posit8/div.vhd
+      - hw/posit8/i2p.vhd
+      - hw/posit8/l2p.vhd
+      - hw/posit8/lu2p.vhd
+      - hw/posit8/mult_approx.vhd
+      - hw/posit8/mult.vhd
+      - hw/posit8/p2i.vhd
+      - hw/posit8/p2l.vhd
+      - hw/posit8/p2lu.vhd
+      - hw/posit8/p2u.vhd
+      - hw/posit8/q2p.vhd
+      - hw/posit8/qmadd.vhd
+      - hw/posit8/sqrt_approx.vhd
+      - hw/posit8/sqrt.vhd
+      - hw/posit8/u2p.vhd
+    file_type: vhdlSource
+
+  posit16_rtl:
+    files:
+      - hw/posit16/add.vhd
+      - hw/posit16/div_approx.vhd
+      - hw/posit16/div.vhd
+      - hw/posit16/i2p.vhd
+      - hw/posit16/l2p.vhd
+      - hw/posit16/lu2p.vhd
+      - hw/posit16/mult_approx.vhd
+      - hw/posit16/mult.vhd
+      - hw/posit16/p2i.vhd
+      - hw/posit16/p2l.vhd
+      - hw/posit16/p2lu.vhd
+      - hw/posit16/p2u.vhd
+      - hw/posit16/q2p.vhd
+      - hw/posit16/qmadd.vhd
+      - hw/posit16/sqrt_approx.vhd
+      - hw/posit16/sqrt.vhd
+      - hw/posit16/u2p.vhd
+    file_type: vhdlSource
+
+  posit32_rtl:
+    files:
+      - hw/posit32/add.vhd
+      - hw/posit32/div_approx.vhd
+      - hw/posit32/div.vhd
+      - hw/posit32/i2p.vhd
+      - hw/posit32/l2p.vhd
+      - hw/posit32/lu2p.vhd
+      - hw/posit32/mult_approx.vhd
+      - hw/posit32/mult.vhd
+      - hw/posit32/p2i.vhd
+      - hw/posit32/p2l.vhd
+      - hw/posit32/p2lu.vhd
+      - hw/posit32/p2u.vhd
+      - hw/posit32/q2p.vhd
+      - hw/posit32/qmadd.vhd
+      - hw/posit32/sqrt_approx.vhd
+      - hw/posit32/sqrt.vhd
+      - hw/posit32/u2p.vhd
+    file_type: vhdlSource
+
+  posit64_rtl:
+    files:
+      - hw/posit64/add.vhd
+      - hw/posit64/div_approx.vhd
+      - hw/posit64/div.vhd
+      - hw/posit64/i2p.vhd
+      - hw/posit64/l2p.vhd
+      - hw/posit64/lu2p.vhd
+      - hw/posit64/mult_approx.vhd
+      - hw/posit64/mult.vhd
+      - hw/posit64/p2i.vhd
+      - hw/posit64/p2l.vhd
+      - hw/posit64/p2lu.vhd
+      - hw/posit64/p2u.vhd
+      - hw/posit64/q2p.vhd
+      - hw/posit64/qmadd.vhd
+      - hw/posit64/sqrt_approx.vhd
+      - hw/posit64/sqrt.vhd
+      - hw/posit64/u2p.vhd
+    file_type: vhdlSource
+
+parameters:
+  PARAM_POSLEN:
+    datatype: int
+    default: 32
+    description: Posit length
+    paramtype: vlogdefine
+  PARAM_POS_LOG_MULT:
+    datatype: bool
+    default: false
+    description: Posit log-approximate multiplication
+    paramtype: vlogdefine
+  PARAM_POS_LOG_DIV:
+    datatype: bool
+    default: false
+    description: Posit log-approximate division
+    paramtype: vlogdefine
+  PARAM_POS_LOG_SQRT:
+    datatype: bool
+    default: false
+    description: Posit log-approximate sqrt
+    paramtype: vlogdefine
+  PARAM_QUIRE_PRESENT:
+    datatype: bool
+    default: false
+    description: Quire units present
+    paramtype: vlogdefine
+
+targets:
+  default: &default
+    filesets:
+      - prau_rtl
+      - use_posit8?  (posit8_rtl)
+      - use_posit16? (posit16_rtl)
+      - use_posit32? (posit32_rtl)
+      - use_posit64? (posit64_rtl)
+      - "!use_posit8? (!use_posit16? (!use_posit32? (!use_posit64? (posit32_rtl))))"
+    toplevel: prau_top
+    parameters:
+      - use_posit8?  (PARAM_POSLEN=8)
+      - use_posit16? (PARAM_POSLEN=16)
+      - use_posit32? (PARAM_POSLEN=32)
+      - use_posit64? (PARAM_POSLEN=64)
+      - "!use_posit8? (!use_posit16? (!use_posit32? (!use_posit64? (PARAM_POSLEN=32))))"
+      - "use_pos_log_mult? (PARAM_POS_LOG_MULT=true)"
+      - "!use_pos_log_mult? (PARAM_POS_LOG_MULT=false)"
+      - "use_pos_log_div? (PARAM_POS_LOG_DIV=true)"
+      - "!use_pos_log_div? (PARAM_POS_LOG_DIV=false)"
+      - "use_pos_log_sqrt? (PARAM_POS_LOG_SQRT=true)"
+      - "!use_pos_log_sqrt? (PARAM_POS_LOG_SQRT=false)"
+      - "use_quire? (PARAM_QUIRE_PRESENT=true)"
+      - "!use_quire? (PARAM_QUIRE_PRESENT=false)"
+
+  sim:
+    <<: *default
+    default_tool: modelsim

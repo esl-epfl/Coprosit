@@ -1,0 +1,67 @@
+CAPI=2:
+
+# Copyright 2023 David Mallasen Quintana
+# Solderpad Hardware License, Version 2.1, see LICENSE for details.
+# SPDX-License-Identifier: Apache-2.0 WITH SHL-2.1
+
+name: "esl-epfl:ip:coprosit:0.0.1"
+description: "Posit and quire arithmetic coprocessor compliant with the RISC-V eXtension interface."
+
+filesets:
+  rtl:
+    depend:
+      - esl-epfl:ip:prau:0.0.1
+    files:
+      - hw/coprosit/coprosit_pkg.sv
+      - hw/coprosit/coprosit_predecoder_pkg.sv
+      - hw/coprosit/coprosit_instr_pkg.sv
+      - hw/coprosit/coprosit_alu.sv
+      - hw/coprosit/coprosit_controller.sv
+      - hw/coprosit/coprosit_decoder.sv
+      - hw/coprosit/coprosit_ex_stage.sv
+      - hw/coprosit/coprosit_predecoder.sv
+      - hw/coprosit/coprosit_regfile.sv
+      - hw/coprosit/coprosit.sv
+    file_type: systemVerilogSource
+
+  dependent_rtl:
+    files:
+      - hw/coprosit/fifo_v3.sv
+      - hw/coprosit/stream_fifo.sv
+      - hw/coprosit/if_xif.sv
+    file_type: systemVerilogSource
+
+  tb:
+    files:
+      - tb/coprosit_testharness.sv
+    file_type: systemVerilogSource
+
+targets:
+  default: &default
+    filesets:
+      - rtl
+    toplevel:
+      - coprosit
+
+  sim:
+    <<: *default
+    default_tool: modelsim
+    filesets_append:
+      - dependent_rtl
+      - tb
+    toplevel:
+      - coprosit_testharness
+    tools:
+      modelsim:
+        vlog_options:
+          - -svinputport=net
+          - -pedanticerrors
+
+  synth:
+    <<: *default
+    default_tool: vivado
+    filesets_append:
+      - dependent_rtl
+    tools:
+      vivado:
+        part: xc7k325tffg900-2 # This is the genesys2 part
