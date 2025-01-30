@@ -1,6 +1,8 @@
 # Coprosit
 
-Posit and quire arithmetic coprocessor compliant with the RISC-V eXtension interface [core-v-xif](https://github.com/openhwgroup/core-v-xif).
+Posit and quire arithmetic coprocessor compliant with the RISC-V eXtension interface [core-v-xif](https://github.com/openhwgroup/core-v-xif). It uses the [PRAU](https://github.com/esl-epfl/PRAU) as execution unit.
+
+![Coprosit diagram](docs/Coprosit_diagram.drawio.svg)
 
 ## Posit configuration
 
