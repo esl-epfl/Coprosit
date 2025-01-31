@@ -1,8 +1,22 @@
 # Coprosit
 
-Posit and quire arithmetic coprocessor compliant with the RISC-V eXtension interface [core-v-xif](https://github.com/openhwgroup/core-v-xif). It uses the [PRAU](https://github.com/esl-epfl/PRAU) as execution unit.
+Posit and quire arithmetic coprocessor compliant with the RISC-V eXtension interface [core-v-xif](https://github.com/openhwgroup/core-v-xif). It uses the [PRAU](https://github.com/esl-epfl/PRAU) as an execution unit. Coprosit is integrated into the [X-HEEP](https://github.com/esl-epfl/x-heep) platform in [PHEE](https://github.com/esl-epfl/PHEE).
 
 ![Coprosit diagram](docs/Coprosit_diagram.drawio.svg)
+
+If you use Coprosit in your academic work, you can cite [our preprint](https://arxiv.org/abs/2501.18253):
+
+~~~BibTeX
+@misc{mallasen2025Increasing,
+      title={Increasing the Energy-Efficiency of Wearables Using Low-Precision Posit Arithmetic with PHEE}, 
+      author={David Mallasén and Pasquale Davide Schiavone and Alberto A. Del Barrio and Manuel Prieto-Matias and David Atienza},
+      year={2025},
+      eprint={2501.18253},
+      archivePrefix={arXiv},
+      primaryClass={cs.AR},
+      url={https://arxiv.org/abs/2501.18253}, 
+}
+~~~
 
 ## Posit configuration
 
